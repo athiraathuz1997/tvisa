@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- displays site properly based on user's device -->
+  <link rel="icon" type="image/png" sizes="32x32" href="./tvisaLogo.png">
+  <link rel="stylesheet" href="./style.css">
+  <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+  <title>TVISA</title>
+</head>
+
+<body>
+  <header><div class="logo"><img src="./tvisaLogoedited.png" alt="logo"></div></header>
+  <section class="container">
+    <div class="left">
+      <h1 data-aos="zoom-in"><br><span>coming <br>soon</span></h1>
+      <p>Fashion rooted in tradition, designed for today</p>
+      
+      <form action="https://api.web3forms.com/submit" method="POST" id="emailForm">
+        <label for="Email">Email Address</label>
+        <input type="hidden" name="access_key" value="ca6706af-2b54-4de3-bba8-6c5db61d26f1">
+        <input type="hidden" name="from_name" value="VIP Customers">
+        <input type="hidden" name="subject" value="VIP Customer Registration">
+        <input name="email" id="Email" type="email" placeholder="Email Address" required>
+        <img src="./icon-error.svg" class="error-icon" alt="error" id="errorIcon" style="display: none;">
+        <button type="submit" title="Join"><img src="./icon-arrow.svg" alt="arrow"></button>
+        <p class="error-text" id="errorText" style="display: none;">Please provide a valid email</p>
+      </form>
+
+      <div data-aos="fade-up">
+        <h2 class="vipList">JOIN OUR VIP LIST</h2>
+        <p class="saveOff">Save 10% off your first order</p>
+      </div>
+    </div>
+    <div class="right" data-aos="fade-left"></div>
+  </section>
+
+  <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+  <script>
+    // Initialize AOS (for animations)
+    AOS.init({
+      offset: 150,
+      duration: 1250,
+      once: true,
+    });
+
+    const form = document.getElementById('emailForm');
+    const emailInput = document.getElementById('Email');
+    const errorIcon = document.getElementById('errorIcon');
+    const errorText = document.getElementById('errorText');
+
+    // Form submit event listener
+    form.addEventListener('submit', (e) => {
+      e.preventDefault();
+      const emailValue = emailInput.value.trim();  // Get the email value
+      console.log(emailValue);
+
+      // Validate the email
+      if (validateEmail(emailValue)) {
+        // If valid, submit the form
+        form.submit();  // Allows form submission after validation
+        errorIcon.style.display = 'none'; // Hide the error icon
+        errorText.style.display = 'none'; // Hide the error text
+      } else {
+        // If invalid, show error message
+        errorIcon.style.display = 'block';
+        errorText.style.display = 'block';
+      }
+    });
+
+    // Email validation function using regex
+    function validateEmail(email) {
+      const re = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6}$/;
+      return re.test(String(email).toLowerCase());
+    }
+  </script>
+</body>
+
+</html>
