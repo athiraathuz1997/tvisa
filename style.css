@@ -81,7 +81,16 @@ html, body {
 .vipList{
 	color: #E25289;
 	font-size: 40px;
+	/* text-align: center; */
 }
+
+@media only screen and (max-width: 768px) {
+	.vipList{
+		font-size: 35px;
+		text-align: center;
+	}
+}
+
 .saveOff{
 	color: #4B4B4B !important;
 }
@@ -190,6 +199,7 @@ footer a {
 		text-align: left;
 		font-size: 5rem;
 		line-height: 5.5rem;
+		margin-top: 5rem;
 	}
 	.container .left p {
 		margin-left: 0;
