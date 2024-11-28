@@ -14,7 +14,7 @@
   <header><div class="logo"><img src="./tvisaLogoedited.png" alt="logo"></div></header>
   <section class="container">
     <div class="left">
-      <h1 data-aos="zoom-in headStyle"><span>coming <br>soon</span></h1>
+      <h1 data-aos="zoom-in"><span>coming <br>soon</span></h1>
       <p>Fashion rooted in tradition, designed for today</p>
       
       <form action="https://api.web3forms.com/submit" method="POST" id="emailForm">
@@ -39,11 +39,20 @@
   <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
   <script>
     // Initialize AOS (for animations)
-    AOS.init({
-      offset: 150,
-      duration: 1250,
-      once: true,
-    });
+    document.addEventListener("DOMContentLoaded", function () {
+  AOS.init({
+    offset: 50, // Lower the offset for better trigger points
+    duration: 1000, // Animation duration
+    easing: 'ease-in-out', // Easing type
+    once: true, // Trigger animations only once
+    mirror: false, // Disable animations when scrolling back up
+  });
+
+  // Reinitialize AOS on window resize
+  window.addEventListener('resize', () => {
+    AOS.refresh();
+  });
+});
 
     const form = document.getElementById('emailForm');
     const emailInput = document.getElementById('Email');
